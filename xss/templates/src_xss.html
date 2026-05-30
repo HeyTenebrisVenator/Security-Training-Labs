@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}src XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>XSS src/alt</h1>
+  <form method="get">
+    <label>Image src</label>
+    <input name="image" value="{{ image_url }}">
+    <label>Alt text</label>
+    <input name="alt" value="{{ alt }}">
+    <button>Render</button>
+  </form>
+  <div class="result">
+    <img class="preview" src="{{ image_url|safe }}" alt="{{ alt|safe }}">
+  </div>
+</section>
+{% endblock %}

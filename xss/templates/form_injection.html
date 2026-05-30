@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Form Injection XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>XSS forms</h1>
+  <form method="post">
+    <label>Name</label>
+    <input name="name" value="{{ name }}" placeholder="Name">
+    <label>Bio</label>
+    <textarea name="bio" placeholder="Bio do perfil">{{ bio }}</textarea>
+    <button>Submit</button>
+  </form>
+  {% if name or bio %}
+  <div class="profile">
+    <h2>Rendered profile</h2>
+    <p><strong>Name:</strong> {{ name|safe }}</p>
+    <div><strong>Bio:</strong> {{ bio|safe }}</div>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

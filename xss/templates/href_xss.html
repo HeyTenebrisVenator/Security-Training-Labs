@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}href XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>XSS in href</h1>
+  <form method="get">
+    <label>URL</label>
+    <input name="next" value="{{ next_url }}">
+    <label>link text</label>
+    <input name="label" value="{{ label }}">
+    <button>Render</button>
+  </form>
+  <div class="result">
+    <a class="big-link" href="{{ next_url|safe }}">{{ label|safe }}</a>
+  </div>
+</section>
+{% endblock %}

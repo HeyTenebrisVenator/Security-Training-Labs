@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Blocked pelo WAF{% endblock %}
+{% block content %}
+<section class="panel danger">
+  <h1>Payload blocked/h1>
+  <p>One or more rules got added</p>
+  <ul>
+  {% for rule in rules %}
+    <li><strong>{{ rule.id }}</strong> — {{ rule.description }} <span class="badge">{{ rule.severity }}</span></li>
+  {% endfor %}
+  </ul>
+</section>
+{% endblock %}

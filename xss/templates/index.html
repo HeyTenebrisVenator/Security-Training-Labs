@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - XSS Professional Lab{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Laboratory XSS</h1>
+  <p>Intensional XSS vulnerable local. Use it to test your methodology, tools and techniques</p>
+</section>
+
+<section class="grid">
+  <div class="card"><h3>GET reflected</h3><p>GET</p><code>/reflected-get?q=...</code></div>
+  <div class="card"><h3>Forms</h3><p>POST</p><code>/form-injection</code></div>
+  <div class="card"><h3>Stored comment XSS</h3><p>STORED</p><code>/comment-xss</code></div>
+  <div class="card"><h3>DOM XSS</h3><p>DOM</p><code>/dom-xss#...</code></div>
+  <div class="card"><h3>href/src</h3><p>HREF / SRC</p><code>/href-xss</code> <code>/src-xss</code></div>
+  <div class="card"><h3>WAF simulado</h3><p>WAF PROTECTED</p><code>?waf=1</code> / <code>?waf=0</code></div>
+</section>
+
+<section class="panel">
+  <h2>WAF RULES</h2>
+  <table>
+    <tr><th>ID</th><th>Description</th><th>Severidade</th></tr>
+    {% for rule in rules %}
+      <tr><td><code>{{ rule.id }}</code></td><td>{{ rule.description }}</td><td>{{ rule.severity }}</td></tr>
+    {% endfor %}
+  </table>
+</section>
+{% endblock %}

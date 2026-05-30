@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}GET Reflected XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>GET based reflected XSS</h1>
+  <form method="get">
+    <input name="q" placeholder="Write something" value="{{ q }}">
+    <button>Test</button>
+  </form>
+  <div class="result">
+    <h2>Result</h2>
+    <p>You searched for: {{ q|safe }}</p>
+  </div>
+</section>
+{% endblock %}

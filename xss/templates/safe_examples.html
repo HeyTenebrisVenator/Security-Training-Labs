@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Safe Examples{% endblock %}
+{% block content %}
+<section class="panel safe">
+  <h1>Safe comparison</h1>
+  <p>Original entrance</p>
+  <pre>{{ q }}</pre>
+  <p>Escaping render</p>
+  <pre>{{ escaped_q }}</pre>
+  <p>Use this page for comparison</p>
+</section>
+{% endblock %}

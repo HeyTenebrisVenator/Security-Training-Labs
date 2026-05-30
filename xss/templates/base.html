@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}XSS Professional Lab{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">XSS Lab</div>
+    <a href="/">Dashboard</a>
+    <a href="/reflected-get?q=test">GET reflected</a>
+    <a href="/form-injection">Forms</a>
+    <a href="/comment-xss">Comments</a>
+    <a href="/dom-xss#hello">DOM</a>
+    <a href="/href-xss?next=https://example.com&label=link">href</a>
+    <a href="/src-xss?image=/not-found.png&alt=demo">src</a>
+    <a href="/attribute-xss?value=demo">Atributo</a>
+    <a href="/safe-examples?q=%3Cscript%3Ealert(1)%3C/script%3E">Safe examples</a>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <span class="badge {{ 'on' if waf_enabled else 'off' }}">WAF {{ 'ON' if waf_enabled else 'OFF' }}</span>
+      <span class="hint">Use <code>?waf=0</code> to compair without being blocked</span>
+    </div>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Stored Comment XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>XSS stored</h1>
+  <form method="post">
+    <label>Autor</label>
+    <input name="author" placeholder="Name">
+    <label>Comment</label>
+    <textarea name="comment" placeholder="Comment"></textarea>
+    <button>Publish</button>
+  </form>
+  <form method="post" action="/comment-xss/reset" class="inline-form">
+    <button class="secondary">Clear comments</button>
+  </form>
+</section>
+<section class="panel">
+  <h2>Comments</h2>
+  {% for c in comments %}
+    <article class="comment">
+      <strong>{{ c.author|safe }}</strong>
+      <small>{{ c.created_at }}</small>
+      <p>{{ c.comment|safe }}</p>
+    </article>
+  {% else %}
+    <p>No comments yet</p>
+  {% endfor %}
+</section>
+{% endblock %}

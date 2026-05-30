@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}DOM XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>DOM-based XSS</h1>
+  <p>Javascript reads <code>location.hash</code> and injects into DOM with <code>innerHTML</code>.</p>
+  <input id="domInput" placeholder="Something">
+  <button id="domButton">update hash</button>
+  <div class="result"><h2>Preview</h2><div id="domOutput"></div></div>
+</section>
+<script src="{{ url_for('static', filename='js/dom_lab.js') }}"></script>
+{% endblock %}

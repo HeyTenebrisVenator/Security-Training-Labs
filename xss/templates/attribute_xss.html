@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Attribute XSS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>XSS generic</h1>
+  <form method="get">
+    <input name="value" value="{{ value }}">
+    <button>Test</button>
+  </form>
+  <div class="result">
+    <input class="wide" value="{{ value|safe }}">
+  </div>
+</section>
+{% endblock %}
